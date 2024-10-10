@@ -1,0 +1,53 @@
+<div class="container">
+    <h1>Crear préstamo</h1>
+
+    <form>
+        <mat-form-field>
+            <mat-label>Identificador</mat-label>
+            <input type="text" matInput placeholder="Identificador" [(ngModel)]="loan.id" name="id" disabled>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre cliente</mat-label>
+            <mat-select [(ngModel)]="loan.client" name="client" required>
+                <mat-option *ngFor="let client of clients" [value] = "client">{{client.name}}</mat-option>
+            </mat-select>
+            <mat-error>El nombre del cliente no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <mat-form-field>
+            <mat-label>Nombre juego</mat-label>
+            <mat-select [(ngModel)]="loan.game" name="game" required>
+                <mat-option *ngFor="let game of games" [value] = "game">{{game.title}}</mat-option>
+            </mat-select>
+            <mat-error>La nombre del juego no puede estar vacío</mat-error>
+        </mat-form-field>
+
+        <div class="datepicker-container">
+            <mat-form-field>
+                <mat-label>Fecha de inicio</mat-label>
+                <input matInput [matDatepicker]="startPicker" [(ngModel)]="loan.dateStart" name="dateStart" required>
+                <mat-datepicker-toggle matSuffix [for]="startPicker"></mat-datepicker-toggle>
+                <mat-datepicker #startPicker></mat-datepicker>
+                <mat-error>La fecha inicial no puede estar vacía </mat-error>
+            </mat-form-field>
+
+            <mat-form-field>
+                <mat-label>Fecha de fin</mat-label>
+                <input matInput [matDatepicker]="endPicker" [(ngModel)]="loan.dateEnd" name="dateEnd" required>
+                <mat-datepicker-toggle matSuffix [for]="endPicker"></mat-datepicker-toggle>
+                <mat-datepicker #endPicker></mat-datepicker>
+                <mat-error>La fecha final puede estar vacía </mat-error>
+            </mat-form-field>
+        </div>
+
+        <div *ngIf="errorMessage" class="error-message"> {{ errorMessage }}
+        </div>
+    </form>
+
+
+    <div class="buttons">
+        <button mat-stroked-button (click)="onClose()">Cerrar</button>
+        <button mat-flat-button color="primary" (click)="onSave()">Guardar</button>
+    </div>
+</div>
