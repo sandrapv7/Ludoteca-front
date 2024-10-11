@@ -1,0 +1,59 @@
+/* Define como se utiliza el componente en HTML*/
+
+.mat-toolbar {
+    background-color: blue;
+    color: white;
+  }
+  
+  .header_container {
+      display: flex; /* Organizar el contenido de forma flexible*/
+      width: 100%;  /* Que el contenedor abarque el 100% del ancho disponible*/
+      .header_title {
+          .mat-icon {
+              vertical-align: sub;
+          }
+      }
+  
+      .header_separator {
+          margin-left: 30px; /*Añade margenes para espaciarlo de otros elementos*/
+          margin-right: 30px;
+      }
+  
+      .header_menu {
+          flex-grow: 4; /*Hace que el espacio de la seccion crezca 4 veces mas*/
+          display: flex;
+          flex-direction: row; /*Organiza los elementos en una fila*/
+  
+          .header_button {
+              margin-left: 1em;
+              margin-right: 1em;
+              font-size: 16px;
+  
+              a {
+                font-weight: lighter; /* a Aplica los enlaces dentro de los botones*/
+                text-decoration: none; /*Quita el subrayado de los enlaces*/
+                cursor: pointer; /* Cuando te pones encima sea un cursor*/
+                color: white;
+              }
+  
+              a:hover {
+                color: grey; /*Cuando el usuario pasa el cursor se ponde de color gris*/
+              }
+  
+              a.active {
+                font-weight: normal;
+                text-decoration: underline;
+                color: lightyellow;
+              }
+  
+          }
+      }
+  
+      .header_login {
+        font-size: 16px;
+        cursor: pointer;
+        .mat-icon {
+            vertical-align: sub;
+        }
+    }
+  }
